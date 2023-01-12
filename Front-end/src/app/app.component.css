@@ -1,0 +1,91 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+mat-toolbar{
+  background-color: rgb(205, 179, 231);
+}
+mat-toolbar b{
+   color: rgb(8, 34, 182);
+   font-size: 30px;
+   font-weight: bold;
+   font-family: cursive;
+   margin-left: 1cm;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+.example-disabled {
+  display: inline-block;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .body{
+    width: 80%;
+    /* margin-top: 20px;
+    margin-left: 10cm;
+    max-width: 2000px; */
+
+    margin: 0 auto;
+    font-size: 80px;
+    background-color: rgb(200, 155, 205);
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+.filter-part{
+      font-size: 25px;
+      color: red;
+      
+  }
+
+.filter-part .filter-name{
+      font-size: 20px;
+      color: green;
+}
+
+.a1, .a2, .a3, .a4, .a5, .a6{
+    font-size: 20px;
+    color: red;
+}
+
+.b1, .b2, .b3, .b4, .b5, .b6{
+  font-size: 15px;
+  color: blue;
+}
+
+.b7{
+  font-size: 10px;
+  background-color: rgb(227, 105, 225);
+  color: white;
+  margin-right: 10px;
+}
+.b8{
+  font-size: 10px;
+  background-color: rgb(229, 48, 39);
+  color: white;
+  margin-right: 10px;
+}
+
+.b7:hover{
+  color: wheat;
+  background-color: green;
+}
+.b8:hover{
+  color: wheat;
+  background-color: blue;
+}
+
+td:hover{
+      color:rgb(229, 48, 39);
+}

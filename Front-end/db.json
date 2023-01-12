@@ -1,0 +1,82 @@
+{
+  "productList": [
+    {
+      "empName": "uttkash",
+      "dobemp": "2001-08-04T18:30:00.000Z",
+      "salaryemp": 10000000,
+      "skillemp": [
+        "C++",
+        "JavaScript",
+        "Web Development",
+        "Cloud Computing"
+      ],
+      "id": 5
+    },
+    {
+      "empName": "sa",
+      "dobemp": "2023-01-03T18:30:00.000Z",
+      "salaryemp": 43,
+      "skillemp": [
+        "JavaScript",
+        "Machine Learning",
+        "Computer Vision"
+      ],
+      "id": 6
+    },
+    {
+      "empName": "ds",
+      "dobemp": "2023-01-05T18:30:00.000Z",
+      "salaryemp": 33,
+      "skillemp": [
+        "JavaScript"
+      ],
+      "id": 8
+    },
+    {
+      "empName": "e",
+      "dobemp": "2023-01-05T18:30:00.000Z",
+      "salaryemp": 33,
+      "skillemp": [
+        "C++"
+      ],
+      "id": 9
+    },
+    {
+      "empName": "dsaf",
+      "dobemp": "2023-01-04T18:30:00.000Z",
+      "salaryemp": 33,
+      "skillemp": [
+        "Python"
+      ],
+      "id": 10
+    },
+    {
+      "empName": "esdf",
+      "dobemp": "2023-01-04T18:30:00.000Z",
+      "salaryemp": 32,
+      "skillemp": [
+        "C++"
+      ],
+      "id": 11
+    },
+    {
+      "empName": "reqw",
+      "dobemp": "2023-01-05T18:30:00.000Z",
+      "salaryemp": 34,
+      "skillemp": [
+        "JavaScript"
+      ],
+      "id": 12
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

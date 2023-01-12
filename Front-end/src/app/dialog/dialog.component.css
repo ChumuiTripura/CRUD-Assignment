@@ -1,0 +1,75 @@
+mat-form-field{
+    width: 100%;
+    /* background-color: rgb(181, 162, 207); */
+}
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+}
+
+.header-add{
+    background-color: rgb(240, 126, 232);
+}
+
+h1{
+    font-size: 35px;
+    font-family: fantasy;
+    font-weight: bold;
+    color: rgba(5, 9, 78, 0.592);
+    text-align: center;
+}
+
+.body-part{
+    background-color: rgb(186, 146, 194);
+    border-radius: 2in;
+    border-color: rgb(155, 69, 69);
+}
+
+.name-ent, .salary-ent, .dob-ent, .skill-ent{
+    color: red;
+    font-size: 20px;
+}
+
+.form-label{
+    font-size: 20px;
+    color: red;
+    /* text-align: center; */
+    display: block;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.form-control{
+    font-size: 20px;
+    color: rgb(81, 113, 229);
+    display: block;
+    margin-left: 10px;
+    margin-bottom: 2cm;
+}
+
+.last-btn{
+    margin-left: 120px;
+}
+.close-btn{
+    background-color: red;
+    margin-right: 25px;
+}
+.save-btn{
+    background-color: blue;
+}
+
+.file-upload{
+    font-size: 16px;
+    color: red;
+}
+
+.upload-img{
+    font-size: 15px;
+    color: blue;
+}
+
+.img-part{
+    margin-top: 10px;
+    margin-bottom: 2cm;
+}
+

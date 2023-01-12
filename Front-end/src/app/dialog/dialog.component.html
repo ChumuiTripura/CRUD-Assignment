@@ -1,0 +1,64 @@
+<div class="body-part">
+    <div class="header-add">
+         <h1>Add Employee Details</h1>
+    </div>
+
+  <form [formGroup] = "productForm">
+        <div>
+        <mat-form-field appearance="fill">
+          <mat-label class="name-ent">Enter Employee Name</mat-label>
+          <input formControlName="empName" matInput type="string" pattern="[A-Za-z]+">
+        </mat-form-field>
+      </div>
+
+  <!-- date of birth section -->
+  <div>
+      <mat-form-field appearance="fill">
+          <mat-label class="dob-ent">Date of Birth</mat-label>
+          <input formControlName="dobemp" matInput [matDatepicker]="picker" [max]="today">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+  </div>
+
+<!-- multiple-selection -->
+  <div>
+      <mat-form-field appearance="fill">
+        <mat-label class="skill-ent">Skills</mat-label>
+          <mat-select formControlName="skillemp" [value]="toppings" multiple>
+          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+
+<!-- salary section -->
+  <div>
+      <mat-form-field appearance="fill">
+        <mat-label class="salary-ent">Salary</mat-label>
+        <input formControlName="salaryemp" matInput type="number" min="0" placeholder="Enter Employee Salary">
+      </mat-form-field> 
+    </div>
+  </form>
+
+ <!-- image upload section -->
+  <div class="img-part">
+    <form #img="ngForm" (ngSubmit)="onSubmitform(img)">
+      <input type="file" (change)="imageUpload($event)" class="file-upload">
+      <div>
+        <!-- <img [src]="productForm" *ngIf="imageSrc" style="height: 300px; width:500px"> -->
+        <button class="upload-img">Uplaod Image</button>
+      </div>
+    </form>
+  </div>
+
+<!-- close and action-button (save and update) -->
+  <div mat-dialog-action class="last-btn">
+      <button mat-fab extended mat-dialog-close class="close-btn">Close</button>
+      <button mat-fab extended (click)="addEmp()" class="save-btn">{{actionBtn }}</button>
+  </div>
+
+ <!-- toast part -->
+ <lib-ng-toast></lib-ng-toast>
+
+ <!-- <app-login></app-login> -->
+</div>
