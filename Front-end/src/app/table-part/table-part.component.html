@@ -6,6 +6,7 @@
         <mat-label class="filter-part" >search something</mat-label>
         <mat-icon matPrefix class="search-icon">search</mat-icon>
         <input matInput class="filter-name" (keyup)="applyFilter($event)" #input>
+        <!-- <input matInput class="filter-name" #input> -->
       </mat-form-field>
       
       <div class="mat-elevation-z8">
@@ -59,8 +60,10 @@
           </tr>
         </table>
       
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"
-         style="font-size: 15px; color: red; "></mat-paginator>
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"
+         style="font-size: 15px; color: red; "></mat-paginator> -->
+         <button class="prev" [disabled]="currentPage == 1" (click)="previous()">Previous</button>
+         <button class="next" [disabled]="disabledValue" (click)="next()">next</button>
       </div>
       
     </div>

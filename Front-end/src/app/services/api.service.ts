@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { identifierName } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { filter } from 'rxjs';
 
 const url = "http://localhost:3000/";
 @Injectable({
@@ -15,8 +16,9 @@ export class ApiService {
     return this.http.post<any>(url, data)
   }
 
-  getProduct(){
-    return this.http.get<any>(url);
+  getProduct(filter: string= '',page: number = 1, limit : number = 4){
+    return this.http.get<any>(url +`?page=${page}&limit=${limit}`+ filter);
+    // return this.http.get<any>(url);  `?search=${search}`
   }
   putProduct(data: any, _id:any){
     return this.http.patch<any>(url+_id, data);
