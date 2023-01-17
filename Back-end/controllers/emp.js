@@ -9,11 +9,13 @@ exports.getEmployee = async (req, res) => {
         // const emp1 = await EmpModel.find();
         // res.status(200).json({total:emp1.length, emp1 });
         const {page, limit, search = " "} = req.query;
+        if(page < 0 && limit < 0){
+            res.status(400).send("Page Error")
+        }
         const emp1 = await EmpModel.find({
               '$or' : [
                     {"empName" : {$regex : `.*${search}.*`, $options : "i"}},
                     {"skillemp" : {$regex : `.*${search}.*`, $options : "i"}}
-                    // {"skillemp" : {$regex : req.params.id}}
               ]
         })
         .limit(limit)
@@ -29,12 +31,6 @@ exports.getEmployee = async (req, res) => {
 exports.getEmployeeById = async(req, res) => {
     try{
         const emps = await EmpModel.findById(req.params.id);
-        // let emps = await EmpModel.find({
-        //     '$or':[
-        //         {"empName" : {$regex : req.params.id}},
-        //         {"skillemp" : {$regex: req.params.id}}
-        //     ]
-        // })
         res.json(emps);
     }catch(err){
         res.status(500).send(err.message)

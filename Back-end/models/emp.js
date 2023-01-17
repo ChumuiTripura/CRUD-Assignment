@@ -21,7 +21,8 @@ const empSchema = new mongoose.Schema({
     },
     sNo : {
         type : Number,
-        required : true
+        required : true,
+        unique: true
     },
     imageUpload:{
         type: String, 

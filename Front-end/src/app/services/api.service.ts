@@ -16,9 +16,8 @@ export class ApiService {
     return this.http.post<any>(url, data)
   }
 
-  getProduct(filter: string= '',page: number = 1, limit : number = 4){
-    return this.http.get<any>(url +`?page=${page}&limit=${limit}`+ filter);
-    // return this.http.get<any>(url);  `?search=${search}`
+  getProduct(filter: String= '',page: number = 1, limit : number = 4){
+    return this.http.get<any>(url + `?search=${filter}&page=${page}&limit=${limit}`);
   }
   putProduct(data: any, _id:any){
     return this.http.patch<any>(url+_id, data);

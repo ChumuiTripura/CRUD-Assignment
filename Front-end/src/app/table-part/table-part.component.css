@@ -84,3 +84,14 @@ td:hover{
   color: red; 
   font-size: 30px;
 }
+
+.prev, .nextPage{
+   font-size: 25px;
+   color: red;
+   margin-left: 7cm;
+   font-family: cursive;
+}
+
+.prev:hover, .nextPage:hover{
+   color: green;
+}

@@ -24,13 +24,15 @@ import { NgToastModule } from 'ng-angular-popup';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ProfileComponent } from './profile/profile.component';
 import { TablePartComponent } from './table-part/table-part.component';
+import { ComfirmDeleteComponent } from './comfirm-delete/comfirm-delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DialogComponent,
     ProfileComponent,
-    TablePartComponent
+    TablePartComponent,
+    ComfirmDeleteComponent
   ],
   imports: [
     BrowserModule,

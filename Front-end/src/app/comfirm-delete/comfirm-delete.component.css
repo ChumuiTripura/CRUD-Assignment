@@ -1,0 +1,27 @@
+.d1{
+    color: red;
+    font-family: cursive;
+    margin-left: 1cm;
+}
+
+.d2{
+    color: brown;
+    font-weight: bold;
+}
+
+.b1{
+    margin-left: 60px;
+    color: green;
+}
+
+.b2{
+    margin-left: 16px;
+    color: blue;
+}
+.b1:hover, .b2:hover{
+    background-color: red;
+}
+
+.fully-body{
+    background-color: wheat;
+}

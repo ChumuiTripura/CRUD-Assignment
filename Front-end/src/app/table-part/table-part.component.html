@@ -50,7 +50,8 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="a6"> Action </th>
             <td mat-cell *matCellDef="let row" class="b6"> {{row.action}} 
               <button mat-fab extended (click)="updatemp(row)" class="b7">UPDATE</button>
-              <button mat-fab extended (click)="deletemp(row._id)" class="b8">REMOVE</button>
+              <!-- <button mat-fab extended (click)="deletemp(row._id)" class="b8">REMOVE</button> -->
+              <button mat-fab extended (click)="deleteConfirmation('0ms', '0ms', row._id)" class="b8">REMOVE</button>
             
           </ng-container>
       
@@ -63,7 +64,7 @@
         <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"
          style="font-size: 15px; color: red; "></mat-paginator> -->
          <button class="prev" [disabled]="currentPage == 1" (click)="previous()">Previous</button>
-         <button class="next" [disabled]="disabledValue" (click)="next()">next</button>
+         <button class="nextPage" [disabled]="disabledValue" (click)="next()">NextPage</button>
       </div>
       
     </div>

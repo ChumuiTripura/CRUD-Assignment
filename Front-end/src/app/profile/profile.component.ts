@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router'
 import {HttpClientModule} from '@angular/common/http';
 import {MatTableDataSource} from '@angular/material/table';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -13,11 +14,17 @@ import {MatTableDataSource} from '@angular/material/table';
 export class ProfileComponent{
   employeeId: any;
   employeeDetail : any= [];
+  imageView !: SafeUrl;
+  public notLoaded: boolean = true;
 
   dataSource!: MatTableDataSource<any>;
   url = "./assets/images.png"
 
-  constructor(private route: ActivatedRoute, private http : HttpClientModule, public api : ApiService) { }
+  constructor(private route: ActivatedRoute, 
+    private http : HttpClientModule, 
+    public api : ApiService,
+    private view: DomSanitizer
+    ) { }
       ngOnInit() : void{
         this.employeeId = this.route.snapshot.params['employeeId'];
         this.getProductID();
@@ -28,9 +35,8 @@ export class ProfileComponent{
           .subscribe((res : any) => {
             if(res != null){
               this.employeeDetail = res;
+              this.imageView = this.view.bypassSecurityTrustUrl(this.employeeDetail.imageUpload);
             }
           })
-      }
-
-      
+      }      
 }
