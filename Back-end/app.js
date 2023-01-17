@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const multer = require('multer')
 const cors = require('cors')
 const url = 'mongodb://localhost:27017/AssignmentCrud'
 const con = mongoose.connection;
@@ -13,6 +14,7 @@ mongoose.connect(url, {useNewUrlParser: true})
 con.on('open' , () => {
     console.log("connecting ... ");
 })
+
 
 const empRouter = require('./routers/emp.js');
 app.use('/', empRouter);

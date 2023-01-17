@@ -1,0 +1,41 @@
+<br>
+<h1 class="p1">Profile View</h1>
+<br><br>
+<div>
+<div>
+<div class="leftSide">
+    <div>
+      <mat-label class="iamge-pic"> Image</mat-label>
+      <br><br>
+      <img [src]="" height="200px" width="200px " class="img-val">
+    </div>
+    
+</div>
+    <div class="rightSide">
+      <div>
+        <mat-label class="pro1"> ID:</mat-label>
+        <span class="s1">{{ employeeDetail.sNo}}</span>
+      </div>
+      <br>
+      <div>
+        <mat-label class="pro2"> Name:</mat-label>
+        <span class="s2">{{ employeeDetail.empName}}</span>
+      </div>
+      <br>
+      <div>
+        <mat-label class="pro3">Date-Of-Birth:</mat-label>
+        <span class="s3">{{ employeeDetail.dobemp | date}}</span>
+      </div>
+      <br>
+      <div>
+        <mat-label class="pro4"> skills:</mat-label>
+        <span class="s4">{{ employeeDetail.skillemp }}</span>
+      </div>
+      <br>
+      <div>
+        <mat-label class="pro5"> salary:</mat-label>
+        <span class="s5">{{ employeeDetail.salaryemp | currency : "INR"}}</span>
+      </div>
+    </div>
+</div>
+

@@ -4,7 +4,7 @@
     </div>
 
   <form [formGroup] = "productForm">
-        <div>
+      <div>
         <mat-form-field appearance="fill">
           <mat-label class="name-ent">Enter Employee Name</mat-label>
           <input formControlName="empName" matInput type="string" pattern="[A-Za-z]+">
@@ -38,27 +38,24 @@
         <input formControlName="salaryemp" matInput type="number" min="0" placeholder="Enter Employee Salary">
       </mat-form-field> 
     </div>
-  </form>
+ 
 
  <!-- image upload section -->
   <div class="img-part">
-    <form #img="ngForm" (ngSubmit)="onSubmitform(img)">
-      <input type="file" (change)="imageUpload($event)" class="file-upload">
-      <div>
-        <!-- <img [src]="productForm" *ngIf="imageSrc" style="height: 300px; width:500px"> -->
-        <button class="upload-img">Uplaod Image</button>
-      </div>
-    </form>
+    <div>
+      <mat-label class="upload-text">Upload Image under 50KB</mat-label>
+    </div><br>
+      <img [src]="url" height="100px" width="100px" class="imge-view"><br>
+      <input type="file" (change)="imageUpload($event)" class="file-upload" formControlName="imageUpload" style="margin-left: 20px;">
   </div>
-
+                              
 <!-- close and action-button (save and update) -->
   <div mat-dialog-action class="last-btn">
       <button mat-fab extended mat-dialog-close class="close-btn">Close</button>
       <button mat-fab extended (click)="addEmp()" class="save-btn">{{actionBtn }}</button>
   </div>
-
+</form>
  <!-- toast part -->
  <lib-ng-toast></lib-ng-toast>
 
- <!-- <app-login></app-login> -->
 </div>

@@ -2,7 +2,6 @@
 
 const mongoose = require('mongoose')
 
-
 const empSchema = new mongoose.Schema({
     empName : {
         type : String,
@@ -21,9 +20,18 @@ const empSchema = new mongoose.Schema({
     salaryemp : {
         type : Number,
         required : true
+    },
+    sNo : {
+        type : Number,
+        required : true
+    },
+    imageUpload:{
+        type: String, 
+        required: true
     }
 })
 
 const EmpModel = mongoose.model('Emp', empSchema)
+
 
 module.exports = EmpModel;

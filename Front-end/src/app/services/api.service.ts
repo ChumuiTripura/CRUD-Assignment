@@ -25,4 +25,8 @@ export class ApiService {
   deleteProduct(_id:any){
     return this.http.delete<any>(url+_id);
   }
+
+  getProductID(_id: any){
+      return this.http.get<any>(url+_id)
+  }
 }

@@ -1,42 +1,64 @@
+const { db } = require('../models/emp');
 const EmpModel = require('../models/emp');
+const CountModel = require('../models/count')
 
 
 // get the all employee details 
-exports.getEmployee = async (err, res) => {
+exports.getEmployee = async (req, res) => {
     try{
-        const emp = await EmpModel.find();
-        res.json(emp);
+        // const {page, limit} = req.query;
+        // const emp = await EmpModel.find()
+        // .limit(limit)
+        // .skip((page-1)*limit);
+        // res.status(200).json({total: emp.length, emp})
+        const emp1 = await EmpModel.find().sort({_id: -1})
+        res.status(200).json({total:emp1.length, emp1 });
+        // res.json(emp1);
     }catch(err){
-        res.send('Error' + err);
+        res.status(500).send(err.message)
     }
 };
 
 // get the specifice employee details
 exports.getEmployeeById = async(req, res) => {
     try{
-        // console.log(EmpModel);
         const emps = await EmpModel.findById(req.params.id);
+        // const emps = await EmpModel.find({
+        //     '$or':[
+        //         {"empName" : {$regex : req.params.id}},
+        //         {"skillemp" : {$regex: req.params.id}}
+        //     ]
+        // })
         res.json(emps);
     }catch(err){
-        res.send('Error' + err);
+        res.status(500).send(err.message)
     }
 };
 
 // post means to add the employee details
 exports.postEmployee =  async(req, res) => {
     try{
-        const {empName, dobemp, skillemp, salaryemp} = req.body;
+        const {empName, dobemp, skillemp, salaryemp, imageUpload} = req.body;
+        
+        // unique id 
+        await CountModel.updateOne({$inc: {sNo : 1}});
+        const employeeId = await CountModel.find();
+        const sNo = employeeId[0].sNo;
+        // console.log(sNo)
+        // console.log(temp);
         const emp = new EmpModel({
             empName,
             dobemp,
             skillemp,
             salaryemp,
+            sNo,
+            imageUpload
         });
-        console.log(req.body)
+        // console.log(req.body)
         const a1 = await emp.save();
         res.json(a1);
     }catch(err){
-        res.status(500).send('Error message ')
+        res.status(500).send(err.message)
     }
 };
 
@@ -49,7 +71,7 @@ exports.patchEmployee = async(req, res) =>{
         res.json(emp)
         console.log(req.params.id)
     }catch (err){
-        res.send("Error found...");
+        res.status(500).send(err.message)
         console.log(res);
     } 
 };
@@ -61,7 +83,7 @@ exports.deleteEmployee = async (req, res) => {
         const deleteEmp = await EmpModel.findByIdAndDelete(id);
         res.json(deleteEmp);
     }catch(err){
-        res.send('Error...');
         console.log(res);
+        res.status(500).send(err.message);
     }
 };

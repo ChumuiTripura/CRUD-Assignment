@@ -17,7 +17,7 @@ export class DialogComponent {
   toppingList: string[] = ['Python', 'C++', 'JavaScript', 'Machine Learning', 'Computer Vision', 
   'Web Development', 'Cloud Computing'];
   productForm !: FormGroup;
-  actionBtn : string = "save"
+  actionBtn : string = "save";
   constructor(private formBuilder : FormBuilder, private api: ApiService,
     private http: HttpClient,
     private toast: NgToastService,
@@ -25,13 +25,15 @@ export class DialogComponent {
      private dialogRef: MatDialogRef<DialogComponent>){}
 
   today = new Date(); 
+  url = "./assets/images.png"
 
   ngOnInit (): void{
     this.productForm = this.formBuilder.group({
       empName : ['',Validators.required],
       dobemp : ['', Validators.required],
       salaryemp : ['', Validators.required],
-      skillemp : ['', Validators.required]
+      skillemp : ['', Validators.required],
+      imageUpload : ['', Validators.required]
     })
     // console.log(this.editData);
     
@@ -42,21 +44,20 @@ export class DialogComponent {
       this.productForm.controls['dobemp'].setValue(this.editData.dobemp);
       this.productForm.controls['salaryemp'].setValue(this.editData.salaryemp);
       this.productForm.controls['skillemp'].setValue(this.editData.skillemp);
-      // this.productForm.controls['uploademp'].setValue(this.editData.uploademp);
+      this.productForm.controls['imageUpload'].setValue(this.editData.imageUpload);
     }
   }
  
   // inside the dailog when we add the details
   addEmp(){
-    // console.log(this.productForm.value)
       if(!this.editData){
         if(this.productForm.valid){
+          console.log(this.productForm.value)
           this.api.postProduct(this.productForm.value)
           .subscribe({
             next:(res=>{
               // alert(res.message)
               this.toast.success({detail: "Employee details added successfully", summary:res.message,duration:2000});
-              // this.toast.error({detail: "Error message"});
               this.productForm.reset();
               this.dialogRef.close('save');
             }),
@@ -87,14 +88,18 @@ export class DialogComponent {
           }
         })
     }
-    filedata : any;
-    imageUpload(img :any){
-        this.filedata = img.target.file[0];
-    }
 
-    onSubmitform(img: NgForm){
-          var myFormData = new FormData();
-          // const headers = new HttpHeaders();
-          myFormData.append('image', this.filedata)
+
+    // upload image part
+    imageUpload(event: any){
+        // console.log(event)
+        if(event.target.files){
+          var reader = new FileReader();
+          reader.readAsDataURL(event.target.files[0]);
+          reader.onload= (event:any)=>{
+              this.url = event.target.result;
+              this.productForm.controls['imageUpload'].setValue(this.url);
+          }
+        }
     }
 }

@@ -22,13 +22,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { NgToastModule } from 'ng-angular-popup';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { TablePartComponent } from './table-part/table-part.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DialogComponent,
-    LoginComponent
+    ProfileComponent,
+    TablePartComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,7 @@ import { LoginComponent } from './components/login/login.component';
     MatPaginatorModule,
     MatSortModule,
     NgToastModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
