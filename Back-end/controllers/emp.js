@@ -6,12 +6,18 @@ const CountModel = require('../models/count')
 // get the all employee details 
 exports.getEmployee = async (req, res) => {
     try{
-        // const {page, limit} = req.query;
-        // const emp = await EmpModel.find()
-        // .limit(limit)
-        // .skip((page-1)*limit);
-        // res.status(200).json({total: emp.length, emp})
-        const emp1 = await EmpModel.find().sort({_id: -1})
+        // const emp1 = await EmpModel.find();
+        // res.status(200).json({total:emp1.length, emp1 });
+        const {page, limit, search = " "} = req.query;
+        const emp1 = await EmpModel.find({
+              '$or' : [
+                    {"empName" : {$regex : `.*${search}.*`, $options : "i"}},
+                    {"skillemp" : {$regex : `.*${search}.*`, $options : "i"}}
+                    // {"skillemp" : {$regex : req.params.id}}
+              ]
+        })
+        .limit(limit)
+        .skip((page-1)*limit);
         res.status(200).json({total:emp1.length, emp1 });
         // res.json(emp1);
     }catch(err){
@@ -23,7 +29,7 @@ exports.getEmployee = async (req, res) => {
 exports.getEmployeeById = async(req, res) => {
     try{
         const emps = await EmpModel.findById(req.params.id);
-        // const emps = await EmpModel.find({
+        // let emps = await EmpModel.find({
         //     '$or':[
         //         {"empName" : {$regex : req.params.id}},
         //         {"skillemp" : {$regex: req.params.id}}
