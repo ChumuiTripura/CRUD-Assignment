@@ -1,29 +1,18 @@
 const { db } = require('../models/emp');
 const EmpModel = require('../models/emp');
 const CountModel = require('../models/count')
-
+const EmployeeServices = require('../services/empservics.js')
 
 // get the all employee details 
 exports.getEmployee = async (req, res) => {
     try{
-        // const emp1 = await EmpModel.find();
-        // res.status(200).json({total:emp1.length, emp1 });
         const {page, limit, search = " "} = req.query;
-        if(page < 0 && limit < 0){
-            res.status(400).send("Page Error")
-        }
-        const emp1 = await EmpModel.find({
-              '$or' : [
-                    {"empName" : {$regex : `.*${search}.*`, $options : "i"}},
-                    {"skillemp" : {$regex : `.*${search}.*`, $options : "i"}}
-              ]
-        })
-        .limit(limit)
-        .skip((page-1)*limit);
+        const emp1 = await EmployeeServices.getEmployee(search,page,limit)
         res.status(200).json({total:emp1.length, emp1 });
         // res.json(emp1);
+        // console.log(emp1)
     }catch(err){
-        res.status(500).send(err.message)
+        res.status(500).json({error : err.message})
     }
 };
 
@@ -89,3 +78,4 @@ exports.deleteEmployee = async (req, res) => {
         res.status(500).send(err.message);
     }
 };
+
